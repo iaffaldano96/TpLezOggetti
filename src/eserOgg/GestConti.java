@@ -30,11 +30,12 @@ public class GestConti {
 
         }
         presentacc();
+        
     } 
 
     static void presentacc() {
         for(int i=0;i<arcc.length; i++){
-            arcc[i].stampaNomi();
+            System.out.println(arcc[i].stampaNomi());
         }
     }
 }
