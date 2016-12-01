@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Giocatore {
     
     String nome="Lisa";
-    ArrayList<Carta>carte;
+    ArrayList<Carta>carteinMano;
     int punti=0;
 
     public String getNome() {
@@ -24,34 +24,45 @@ public class Giocatore {
     
     public Giocatore(String nome) {
         this.nome=nome;
+        //carte array list di carte per agg o toglie le carte dall'array
+        carteinMano= new ArrayList<Carta>();
+    }
+    
+    public String vediCarteinMano(){
+        String ris="Non ho carte in mano oppure ho  rinunciato";
+        String elenco="";
+        for(int i=0;i<carteinMano.size();i++){
+            elenco+= carteinMano.get(i).getNome()+"\n";
+        }
+        //ora mi trovo con elenco vuoto o con le carte
+        //se è ancora vuoto ritorno ris
+        //altrimenti assegno a ris, elenco
+        if(elenco.equals("")==true)
+            return ris;
+        else
+            return elenco;
     }
 
     public int getPunti() {
         return punti;
     }
-
-    public void setPunti(int punti) {
-        this.punti = punti;
-        //carte array list di carte per agg o tglie le carte dall'array
-        carte= new ArrayList<Carta>();
-    }
     
     //metodo per aggiungere un carta che viene passata nell'array list
     public  void prendeCarta(Carta c){
-        carte.add(c);  
+        carteinMano.add(c);  
     }
     
     public  void seiFuori(){
-            carte.clear();
+            carteinMano.clear();
     }        
     
     //metodo per il settemezzo per avere il conto dei punti con le carte che ho nell'array list
     public  double dammiPunteggio(){
         double ris=0;
         //ciclo tutti gli ele fino a size()
-        for(int i=0;i<carte.size();i++){
+        for(int i=0;i<carteinMano.size();i++){
             //prendo una carta per volta, la i - esima
-            Carta c=carte.get(i);
+            Carta c=carteinMano.get(i);
             if(c.getValore()<8)
                 ris+=c.getValore();
             else
