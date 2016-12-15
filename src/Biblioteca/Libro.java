@@ -5,44 +5,49 @@
  */
 package Biblioteca;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author tss
  */
 public class Libro {
-    
-    private int codLibro;
-    private String titolo;
-    private String autore;    
+  private  String titolo;
+  private  String autore;
+  private  int codLibro;
 
-    public Libro(int codLibro, String titolo, String autore) {
-        this.codLibro = codLibro;
+    public Libro(String titolo, String autore, int codLibro) {
         this.titolo = titolo;
-        this.autore = autore;        
-    }    
+        this.autore = autore;
+        this.codLibro = codLibro;
+    }
 
     public String getTitolo() {
         return titolo;
     }
 
-    public String getAutore() {
-        return autore;
-    }        
-
-    public int getCodLibro() {
-        return codLibro;
-    } 
-
     public void setTitolo(String titolo) {
         this.titolo = titolo;
+    }
+
+    public String getAutore() {
+        return autore;
     }
 
     public void setAutore(String autore) {
         this.autore = autore;
     }
+
+    public int getCodLibro() {
+        return codLibro;
+    }
     
-    
-    
+    public String getInfo(){
+    String msg="";
+    msg=getCodLibro() + "#: " +getTitolo() + " - " +getAutore();
+    return msg;
+    }
+//nessuno deve toccare il codice
+//    public void setCodLibro(int codLibro) {
+//        this.codLibro = codLibro;
+//    }
+  
 }

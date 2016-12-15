@@ -5,42 +5,64 @@
  */
 package Biblioteca;
 
+import java.util.Date;
+
 /**
  *
  * @author tss
  */
 public class Prestito {
     
-    private int codCliente;
     private int codLibro;
-    private String datapreso;
-    private String dataconse;
+    private int codCliente;
+    private String datapreso=new Date().toString();
+    private String datarestituito="";
+    boolean reso=false;
+    String note;
 
-    public Prestito(int codCliente, int codLibro, String datapreso) {
-        this.codCliente = codCliente;
+    public Prestito(int codCliente, int codLibro, String note) {
         this.codLibro = codLibro;
-        this.datapreso = datapreso;
-    }
-
-    public int getCodCliente() {
-        return codCliente;
+        this.codCliente = codCliente;
+        this.note = note;
     }
 
     public int getCodLibro() {
         return codLibro;
     }
 
+    public int getCodCliente() {
+        return codCliente;
+    }
+
     public String getDatapreso() {
         return datapreso;
     }
 
-    public String getDataconse() {
-        return dataconse;
+    public String getDatarestituito() {
+        return datarestituito;
     }
 
-    public void setDataconse(String dataconse) {
-        this.dataconse = dataconse;
+    public boolean isReso() {
+        return reso;
     }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setDatarestituito(String datarestituito) {
+        this.datarestituito = datarestituito;
+    }
+
+    public void setReso(boolean reso) {
+        this.reso = reso;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    
     
     
     

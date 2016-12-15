@@ -13,56 +13,52 @@ import java.util.ArrayList;
  */
 public class Biblioteca {
 
-    private String ragioneSociale;
-    private String indirizzo;
-    private ArrayList<Libro> elencolibri = new ArrayList<Libro>();
-    private ArrayList<Dipendente> elencodipendenti = new ArrayList<Dipendente>();
-    private ArrayList<Cliente> elencoclienti = new ArrayList<Cliente>();
+    /**
+     * @param args the command line arguments
+     */
+  private  String nomeBiblioteca;
+  private   String indirizzo;
+  private   ArrayList<Libro> elencoLibri=new ArrayList<Libro>();
+  private  ArrayList<Dipendente> elencoDipendenti=new ArrayList<Dipendente>();
+  private  ArrayList<Cliente> elencoClienti=new ArrayList<Cliente>();
+  private  ArrayList<Prestito> elencoPrestiti=new ArrayList<Prestito>();
 
-    public Biblioteca(String ragioneSociale, String indirizzo) {
-        this.ragioneSociale = ragioneSociale;
+    public Biblioteca(String nomeBiblioteca, String indirizzo) {
+        this.nomeBiblioteca = nomeBiblioteca;
         this.indirizzo = indirizzo;
     }
 
-    public String getRagioneSociale() {
-        return ragioneSociale;
+    public String getNomeBiblioteca() {
+        return nomeBiblioteca;
     }
 
     public String getIndirizzo() {
         return indirizzo;
     }
 
-    public ArrayList<Libro> getElencolibri() {
-        return elencolibri;
+    public ArrayList<Libro> getElencoLibri() {
+        return elencoLibri;
     }
 
-    public ArrayList<Dipendente> getElencodipendenti() {
-        return elencodipendenti;
+    public ArrayList<Dipendente> getElencoDipendenti() {
+        return elencoDipendenti;
     }
 
-    public ArrayList<Cliente> getElencoclienti() {
-        return elencoclienti;
+    public ArrayList<Cliente> getElencoClienti() {
+        return elencoClienti;
     }
 
-    public void aggLibro(Libro l) {
-        elencolibri.add(l);
+    public ArrayList<Prestito> getElencoPrestiti() {
+        return elencoPrestiti;
+    }        
+    
+    public String getSchedario(){
+    String msg="";
+    for (int i=0;i<elencoLibri.size();i++){
+    Libro  l=elencoLibri.get(i);
+        msg=msg +l.getCodLibro() + " - " +l.getTitolo()+ " - "+l.getAutore()+"\n";
     }
-
-    public void aggDipendente(Dipendente d) {
-        elencodipendenti.add(d);
+    return msg;
     }
-
-    public void aggCliente(Cliente c) {
-        elencoclienti.add(c);
-    }
-
-    public String stampaLibri() {
-        String report = "";
-        for (int i = 0; i < elencolibri.size(); i++) {
-            Libro l=elencolibri.get(i);
-            report += l.getCodLibro() + "#" + " " + l.getTitolo() + " - " + l.getAutore() + "\n";
-        }
-        return report;
-    }
-
+    
 }

@@ -5,24 +5,22 @@
  */
 package Biblioteca;
 
-import java.util.Date;
-
-
 /**
  *
  * @author tss
  */
-public class Cliente extends Persona{
-           
+public class Cliente extends Persona {
+
     private int codCliente;
 
-    public Cliente(int codCliente, String nominativo, int numtel) {
-        super(nominativo, numtel);
+    public Cliente(String cognome, String nome, int codCliente) {
+        super(cognome, nome);
         this.codCliente = codCliente;
     }
 
     public int getCodCliente() {
         return codCliente;
-    }    
+    }
+    
     
 }

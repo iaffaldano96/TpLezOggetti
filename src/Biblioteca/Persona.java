@@ -10,22 +10,20 @@ package Biblioteca;
  * @author tss
  */
 public class Persona {
-    
-     
-    private String nominativo;    
-    private int numtel;
+    private String cognome;
+    private String nome;
 
-    public Persona(String nominativo, int numtel) {
-        this.nominativo = nominativo;
-        this.numtel = numtel;
+    public Persona(String cognome, String nome) {
+        this.cognome = cognome;
+        this.nome = nome;
     }
 
-    public int getNumtel() {
-        return numtel;
-    }    
+    public String getCognome() {
+        return cognome;
+    }
 
-    public String getNominativo() {
-        return nominativo;
-    }    
+    public String getNome() {
+        return nome;
+    }
     
 }
