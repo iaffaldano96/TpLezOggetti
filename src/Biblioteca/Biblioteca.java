@@ -22,12 +22,22 @@ public class Biblioteca {
   private  ArrayList<Dipendente> elencoDipendenti=new ArrayList<Dipendente>();
   private  ArrayList<Cliente> elencoClienti=new ArrayList<Cliente>();
   private  ArrayList<Prestito> elencoPrestiti=new ArrayList<Prestito>();
+  private int maxLibri=2;
 
     public Biblioteca(String nomeBiblioteca, String indirizzo) {
         this.nomeBiblioteca = nomeBiblioteca;
         this.indirizzo = indirizzo;
+        this.maxLibri=2;
     }
 
+    public int getMaxLibro() {
+        return maxLibri;
+    }
+
+    public void setMaxLibro(int maxLibro) {
+        this.maxLibri = maxLibro;
+    }
+        
     public String getNomeBiblioteca() {
         return nomeBiblioteca;
     }
@@ -52,6 +62,22 @@ public class Biblioteca {
         return elencoPrestiti;
     }        
     
+    public boolean isClienteMoroso(int codCliente){
+        boolean moroso=false;
+        int conta=0;
+        
+        for(Prestito p : elencoPrestiti){
+            if(p.getCodCliente()==codCliente && p.getDatarestituito().equals("")){
+                conta++;
+                if(conta>=maxLibri){
+                    moroso=true;
+                    break;
+                }    
+            }    
+        } 
+        return moroso;
+    }
+    
     public String getSchedario(){
     String msg="";
     for (int i=0;i<elencoLibri.size();i++){
@@ -60,5 +86,28 @@ public class Biblioteca {
     }
     return msg;
     }
+    
+    public boolean libroDisponibile(int codLibro){
+        boolean disponibile=true;
+        
+        for (int i=0;i<elencoPrestiti.size();i++){
+            if(elencoLibri.get(i).getCodLibro()==codLibro && elencoPrestiti.get(i).getDatarestituito().equals("") ){
+                disponibile=false;
+                break;
+            }
+        }
+        /*for (int i=0;i<elencoLibri.size();i++){
+            if(elencoLibri.get(i).getCodLibro()==codLibro){
+                for (i=0;i<elencoPrestiti.size();i++){
+                    if(elencoPrestiti.get(i).getDatarestituito().equals(""))
+                    disponibile=false;
+                    break;
+                }
+            }
+          }*/
+        return disponibile;
+    }
+    
+    
     
 }

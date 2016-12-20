@@ -41,7 +41,8 @@ public class lancioBiblio {
         bib.getElencoPrestiti().add(p);
         p= new Prestito(2, 2, "Arancione - Hobbit "+new Date().toString());
         bib.getElencoPrestiti().add(p);
-         
+        
+        
         //JOptionPane.showMessageDialog(null, bib.getSchedario());
 
         /* Create and display the form */
