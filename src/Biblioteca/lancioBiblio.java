@@ -37,9 +37,9 @@ public class lancioBiblio {
         bib.getElencoLibri().add(l2);        
         
         Prestito p;
-        p= new Prestito(1, 1, "Blu - signore degli anelli "+new Date().toString());
+        p= new Prestito(1, 1, "[0] Blu - signore degli anelli "+new Date().toString());
         bib.getElencoPrestiti().add(p);
-        p= new Prestito(2, 2, "Arancione - Hobbit "+new Date().toString());
+        p= new Prestito(2, 2, "[1] Arancione - Hobbit "+new Date().toString());
         bib.getElencoPrestiti().add(p);
         
         

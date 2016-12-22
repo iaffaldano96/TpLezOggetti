@@ -33,16 +33,31 @@ public class Dipendente extends Persona {
         return msg;
     }
      
-         public String addNewPrestito(int codCliente, int codLibro,String note, Biblioteca bib) {
+    public String addNewPrestito(int codCliente, int codLibro,String note, Biblioteca bib) {
         String msg="Impossibile fare il prestito";
         if(codCliente<0 || codLibro<0)
             return msg;
-        
+        String indPosOriginaria="["+bib.getElencoPrestiti().size()+"] ";
         //creo un nuovo oggetto
-        Prestito p=new Prestito(codCliente, codLibro, note +" "+new Date().toString());
+        Prestito p=new Prestito(codCliente, codLibro,indPosOriginaria+ note +" "+new Date().toString());
         bib.getElencoPrestiti().add(p);
         
         msg ="Aggiunto prestito: codCliente= "+ codCliente + "codLibro= " + codLibro;
+        return msg;
+    }  
+     
+    public String addNewCliente(String cognome, String nome, Biblioteca bib) {
+        String msg="Impossibile aggiungere il cliente";
+        if(cognome.equals("") || nome.equals(""))
+            return msg;
+        int newcode = 1;
+        if (bib.getElencoClienti().size() > 0) {
+            newcode = bib.getElencoClienti().get(bib.getElencoClienti().size() - 1).getCodCliente()+ 1;
+        }
+
+        Cliente c = new Cliente(cognome, nome, newcode);
+        bib.getElencoClienti().add(c);
+        msg ="Aggiunto cliente: "+ newcode + "#: " + cognome + "  " + nome;
         return msg;
     } 
 
@@ -57,7 +72,7 @@ public class Dipendente extends Persona {
 
         Libro l = new Libro(titolo, autore, newcode);
         bib.getElencoLibri().add(l);
-        msg ="Aggiunto libro; "+ newcode + "#: " + titolo + " - " + autore;
+        msg ="Aggiunto libro: "+ newcode + "#: " + titolo + " - " + autore;
         return msg;
     }
 
@@ -67,6 +82,20 @@ public class Dipendente extends Persona {
         {
             bib.getElencoLibri().remove(index);
             msg = "Libro eliminato";
+        }
+        return msg;
+    }
+    
+    public String resoLibro(int index, Biblioteca bib) {
+        String msg = "Impossibile restituire libro";
+        if (index <= bib.getElencoPrestiti().size() && index >= 0)//caso vero 
+        {
+            
+                Prestito p=bib.getElencoPrestiti().get(index);
+                String d= new Date().toString();
+                p.setDatarestituito(d);
+                msg = "Libro restituito";
+            
         }
         return msg;
     }
